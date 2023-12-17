@@ -1,1 +1,285 @@
+//Project 2
+//Karina Washington
+//December 9, 2023
 
+//Step 1: Input - Load Data Structure 
+
+<iostream> 
+
+<fstream> 
+
+<sstream> 
+
+<vector> 
+
+<algorithm> 
+
+ 
+
+// Define a structure for a course 
+
+struct Course { 
+
+    std::string courseNumber; 
+
+    std::string name; 
+
+    std::vector<std::string> prerequisites; 
+
+}; 
+
+
+// Function to load data from a file into the data structure 
+
+std::vector<Course> loadDataStructure(const std::string& fileName) { 
+
+    std::ifstream file(fileName); 
+
+    std::vector<Course> courses; 
+
+ 
+
+    if (file.is_open()) { 
+
+        std::string line; 
+
+        while (std::getline(file, line)) { 
+
+            std::stringstream ss(line); 
+
+            Course course; 
+
+            std::getline(ss, course.courseNumber, ','); 
+
+            std::getline(ss, course.name, ','); 
+
+ 
+
+            std::string prerequisite; 
+
+            while (std::getline(ss, prerequisite, ',')) { 
+
+                course.prerequisites.push_back(prerequisite); 
+
+            } 
+
+ 
+
+            courses.push_back(course); 
+
+        } 
+
+        file.close(); 
+
+    } else { 
+
+        std::cerr << "Unable to open file: " << fileName << std::endl; 
+
+    } 
+
+ 
+
+    return courses; 
+
+} 
+
+ 
+
+int main() { 
+
+    // Prompt the user for the file name 
+
+    std::cout << "Enter the file name containing the course data: "; 
+
+    std::string fileName; 
+
+    std::cin >> fileName; 
+
+ 
+
+    // Load data into the data structure 
+
+    std::vector<Course> courseData = loadDataStructure(fileName); 
+
+ 
+
+    // Display a message indicating successful data loading 
+
+    std::cout << "Data loaded successfully!" << std::endl; 
+
+ 
+
+    // Continue with the menu and other functionalities 
+
+    // ... 
+
+ 
+
+    return 0; 
+
+} 
+
+//This code defines a structure Course to represent a course and a function loadDataStructure to load data from a file into a vector of Course objects. 
+
+//Menu 
+//Add the following code to your main function: 
+
+ 
+int displayMenu() { 
+
+    int choice; 
+
+    std::cout << "1. Load Data Structure.\n" 
+
+              << "2. Print Course List.\n" 
+
+              << "3. Print Course.\n" 
+
+              << "9. Exit\n" 
+
+              << "What would you like to do? "; 
+
+    std::cin >> choice; 
+
+    return choice; 
+
+} 
+
+//Step 3: Load Data Structure - Call 
+
+//Update your main function: 
+
+int main() { 
+
+    // ... (previous code) 
+
+ 
+
+    int choice; 
+
+    do { 
+
+        choice = displayMenu(); 
+
+        switch (choice) { 
+
+            case 1: 
+
+                courseData = loadDataStructure(fileName); 
+
+                std::cout << "Data loaded successfully!" << std::endl; 
+
+                break; 
+
+            // Add cases for other menu options (2, 3, 9) 
+
+            // ... 
+
+            default: 
+
+                if (choice != 9) { 
+
+                    std::cout << choice << " is not a valid option." << std::endl; 
+
+                } 
+
+        } 
+
+    } while (choice != 9); 
+
+ 
+
+    std::cout << "Thank you for using the course planner!" << std::endl; 
+
+ 
+
+    return 0; 
+
+} 
+
+//Step 4: Print Course List 
+
+//Add the following function: 
+ 
+
+void printCourseList(const std::vector<Course>& courses) { 
+
+    std::cout << "Here is a sample schedule:" << std::endl; 
+
+    for (const auto& course : courses) { 
+
+        std::cout << course.courseNumber << ", " << course.name << std::endl; 
+
+    } 
+
+} 
+
+//And update the switch statement in your main function: 
+
+
+case 2: 
+
+    printCourseList(courseData); 
+
+    break; 
+
+// Add cases for other menu options (1, 3, 9) 
+
+// ... 
+
+//Step 5: Print Course 
+
+//Add the following function: 
+
+void printCourse(const std::vector<Course>& courses, const std::string& courseNumber) { 
+
+    auto it = std::find_if(courses.begin(), courses.end(), 
+
+                           [&](const Course& course) { return course.courseNumber == courseNumber; }); 
+
+ 
+
+    if (it != courses.end()) { 
+
+        std::cout << it->courseNumber << ", " << it->name << std::endl; 
+
+        if (!it->prerequisites.empty()) { 
+
+            std::cout << "Prerequisites: "; 
+
+            for (const auto& prerequisite : it->prerequisites) { 
+
+                std::cout << prerequisite << ", "; 
+
+            } 
+
+            std::cout << std::endl; 
+
+        } 
+
+    } else { 
+
+        std::cout << "Course not found." << std::endl; 
+
+    } 
+
+} 
+
+//Update the switch statement in your main function: 
+
+ 
+case 3: 
+
+    std::cout << "What course do you want to know about? "; 
+
+    std::string courseNumber; 
+
+    std::cin >> courseNumber; 
+
+    printCourse(courseData, courseNumber); 
+
+    break; 
+
+// Add cases for other menu options (1, 2, 9) 
+
+// ... 
