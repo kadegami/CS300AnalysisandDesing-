@@ -1,4 +1,8 @@
 # CS300AnalysisandDesing-
+
+My experience during my class CS 300 Analysis and Desing made me be a better programer and to understand code and pesudocode better. 
+I will explain the main challanges and growth I experiences during this class. 
+
 Problem Identification: In both projects, the primary task revolves around managing course data within a Computer Science program.
 Project One focuses on outlining pseudocode for manipulating and organizing this data using different data structures (vectors, hash tables, trees) 
 while emphasizing runtime analysis. Project Two involves loading course data from a file, organizing it into a structure, and implementing a menu-driven interface 
