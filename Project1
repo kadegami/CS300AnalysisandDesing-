@@ -1,0 +1,133 @@
+Karina Washington
+CS 300 
+Saba Jamaliannasrabadi 
+December 14, 2023
+
+Pseudocode Document
+
+// Vector pseudocode
+int numPrerequisiteCourses(Vector<Course> courses, Course c) {
+    totalPrerequisites = prerequisites of course c
+    for each prerequisite p in totalPrerequisites
+        add prerequisites of p to totalPrerequisites
+    print number of totalPrerequisites
+}
+
+void printSampleSchedule(Vector<Course> courses) {
+    // Add implementation here
+}
+
+void printCourseInformation(Vector<Course> courses, String courseNumber) {
+    for all courses
+        if the course is the same as courseNumber
+            print out the course information
+            for each prerequisite of the course
+                print the prerequisite course information
+}
+
+// Hashtable pseudocode
+int numPrerequisiteCourses(Hashtable<Course> courses) {
+    // Add implementation here
+}
+
+void printSampleSchedule(Hashtable<Course> courses) {
+    // Add implementation here
+}
+
+void printCourseInformation(Hashtable<Course> courses, String courseNumber) {
+    // Add implementation here
+}
+
+// Tree pseudocode
+int numPrerequisiteCourses(Tree<Course> courses) {
+    // Add implementation here
+}
+
+void printSampleSchedule(Tree<Course> courses) {
+    // Add implementation here
+}
+
+void printCourseInformation(Tree<Course> courses, String courseNumber) {
+    // Add implementation here
+}
+
+// Opening and Reading File, Parsing Each Line, and Checking for Formatting Errors
+OpenFile(filename):
+    try:
+        Read file line by line:
+            Parse each line using comma-separated values:
+                Extract courseNumber, name, and prerequisites
+                Check formatting for each line:
+                    Ensure courseNumber and name are present
+                    Check if prerequisites exist and are correctly formatted if available
+                Create a Course object with the extracted data
+                Append the Course object to the appropriate data structure
+            If an error occurs:
+                Display formatting error message
+    except FileNotFoundError:
+        Display error message: File not found
+    Close the file
+
+// Creating Course Objects
+CreateCourseObject(line):
+    Split the line into courseNumber, name, prerequisites
+    Create a new Course object:
+        Assign courseNumber and name to the object
+        If prerequisites exist:
+            Split prerequisites by comma:
+                Assign each prerequisite to the Course object
+    Return the Course object
+
+// Printing Course Information and Prerequisites
+PrintCourseInformation(courseNumber):
+    Search for the course in the data structure:
+        If course is found:
+            Display course name and courseNumber
+            If prerequisites exist:
+                Display the prerequisites
+        Else:
+            Display message: Course not found
+
+// Menu Design Pseudocode
+DisplayMenu():
+    Display options:
+        1. Load Data Structure
+        2. Print Course List
+        3. Print Course
+        4. Exit
+    Prompt user for choice
+    Perform action based on user choice
+
+// Sorting and Displaying Course List
+SortAndDisplayCourses():
+    Sort courses in the data structure by courseNumber (alphanumeric order)
+    Display the sorted course list
+
+Example Runtime Analysis
+
+This pseudocode outlines the basic structure and operations required to meet the project's objectives. You'll need to implement these operations for each data structure (vector, hash table, and tree) and perform runtime analysis as specified. Once the pseudocode is ready, the runtime analysis can be calculated by counting the number of operations performed in different scenarios for each data structure.
+for all courses: O(n)
+if the course is the same as courseNumber: O(n)
+print out the course information: O(1)
+for each prerequisite of the course: O(n)
+print the prerequisite course information: O(n)
+m is the number of lines in the file.
+n is the number of courses.
+p is the total number of prerequisites across all courses.
+
+Code: The pseudocode presented for printing course information using the vector data structure.
+Line Cost: Indicates the cost (time complexity) assigned to each line of code. In this analysis, the cost per line is considered to be 1.
+# Times Executes: Refers to the number of times each line or segment of code will execute.
+Total Cost: This column demonstrates the cumulative cost for each segment of code considering the number of times it executes.
+Runtime: Represents the overall runtime complexity of the code, expressed in Big O notation. 
+
+Code	Line Cost	# Times Executes	Total Cost
+for all courses	1	n	n
+if the course is the same as courseNumber	1	n	n
+print out the course information	1	1	1
+for each prerequisite of the course	1	n	n
+print the prerequisite course information	1	n	n
+Total Cost			4n + 1
+Runtime			O(n)
+
+
